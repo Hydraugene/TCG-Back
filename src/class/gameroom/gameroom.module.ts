@@ -4,4 +4,4 @@ import { Gameroom } from './gameroom';
 @Module({
   providers: [Gameroom],
 })
-export class EventsModule {}
+export class GameroomModule {}
