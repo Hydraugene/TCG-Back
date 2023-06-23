@@ -1,6 +1,12 @@
-import { Controller, Get } from '@nestjs/common';
+import { Body, Controller, Get, Post } from '@nestjs/common';
 import { AppService } from './app.service';
 import { UserServicesService } from './services/user-services/user-services.service';
+
+export class Connexion {
+  readonly username: string;
+  readonly password: string;
+  // Add other properties as needed
+}
 
 @Controller()
 export class AppController {
@@ -17,5 +23,9 @@ export class AppController {
     return this.userServices.getUsers();
   }
 
+  @Post('connect')
+  async getConnexion(@Body() infosConnexion: Connexion){
+    return this.userServices.connexion(infosConnexion.username, infosConnexion.password)
+  }
   
 }

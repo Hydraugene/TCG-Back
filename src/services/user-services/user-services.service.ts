@@ -7,6 +7,7 @@ import { UsersRepository } from '../../class/users/users.repository';
 
 @Injectable()
 export class UserServicesService {
+  private Users : User[] = [{id:0, username:'Thomas', password:'motdepasse'},{id:1, username:'Chouk', password:'motdepasse'}]
     constructor(
         @InjectRepository(User)
         private usersRepository: Repository<User>,
@@ -17,6 +18,15 @@ export class UserServicesService {
 
   async getUsers(): Promise<User[]> {
     return this.usersRepository.find();
+  }
+
+  async connexion(id : string, pw : string) : Promise<User> {
+    // (await this.usersRepository.find()).filter(item => item.username == id && item.password == pw)
+    
+    // this?this.usersRepository.findOne(id, pw);
+
+    //tmp pour démo sans BDD
+    return this.Users.find(item => item.username == id && item.password == pw)
   }
 
 //   findOne(id: number): Promise<User | null> {
